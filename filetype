@@ -1,0 +1,23 @@
+#!/bin/sh
+printf "파일/디렉토리 이름 입력 [enter]: "
+read name
+
+if [ -L "$name" ]; then
+	echo "$name 은 심볼릭링크 입니다."
+elif [ ! -e "$name" ]; then
+	echo "$name 은 존재하지 않습니다."
+elif [ -d "$name" ]; then
+	echo "$name 은 디렉토리 입니다."
+elif [ -c "$name" ]; then
+	echo "$name 은 문자장치 입니다."
+elif [ -b "$name" ]; then
+	echo "$name 은 블록장치 입니다."
+elif [ -p "$name" ]; then
+	echo "$name 은 파이프 입니다."
+elif [ -S "$name" ]; then
+	echo "$name 은 소켓 입니다."
+elif [ -f "$name" ]; then
+	echo "$name 은 보통파일 입니다."
+else
+	echo "$name 은 알 수 없는 유형입니다."
+fi
