@@ -1,0 +1,12 @@
+CC = gcc
+CFLAGS = -Wall -g
+
+base: base.o binary.o
+	gcc -Wall -g base.o binary.o -o base
+base.o: base.c binary.h
+	gcc -Wall -g -c base.c -o base.o
+binary.o: binary.c binary.h
+	gcc -Wall -g -c binary.c -o binary.o
+
+clean:
+	rm -f base base.o binary.o
